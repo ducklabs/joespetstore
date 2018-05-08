@@ -1,0 +1,15 @@
+﻿@model JoesPetStore.Models.PetDetailsViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="">
+        <h1>Joe's Pet Store</h1>
+        <h2>Pet Of The Day!</h2>
+        <p>
+            Our pet of the day is a lovely Persian cat named L.
+            Click @Html.ActionLink("here", "Details", "Pet") to see details and take him home.
+        </p>
+    </div>
+</div>
