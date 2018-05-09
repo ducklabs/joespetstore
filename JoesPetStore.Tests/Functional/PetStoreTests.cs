@@ -62,21 +62,6 @@ namespace JoesPetStore.Tests.Functional
             actualPetDetaislViewModel.ShouldBeNull();
         }
 
-        [Test]
-        public void OfferPet()
-        {
-            // assemble
-            var expectedPerDetailsViewModel = CreatePetInputViewModel();
-            Facade.CreatePet(expectedPerDetailsViewModel);
-
-            // act
-            var actualPetDetaislViewModel = Facade.FindPet();
-            //Facade.
-
-            // assert
-            //actualPetDetaislViewModel.ShouldBeNull();
-        }
-
 
     }
 }
