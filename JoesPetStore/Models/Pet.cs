@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace JoesPetStore.Models
+﻿namespace JoesPetStore.Models
 {
     public class Pet : IEntity
     {

@@ -7,13 +7,13 @@ namespace JoesPetStore.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Initial : IMigrationMetadata
+    public sealed partial class AddReceipt : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddReceipt));
         
         string IMigrationMetadata.Id
         {
-            get { return "201805091930597_Initial"; }
+            get { return "201805092242086_AddReceipt"; }
         }
         
         string IMigrationMetadata.Source

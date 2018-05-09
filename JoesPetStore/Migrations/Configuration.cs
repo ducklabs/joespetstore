@@ -22,7 +22,10 @@ namespace JoesPetStore.Migrations
             //  to avoid creating duplicate seed data.
             context.Pets.AddOrUpdate(x => x.Id,
                 new Pet() { Id = 1, Name = "Leo" }
-            ); 
+            );
+            context.Receipts.AddOrUpdate(x => x.Id,
+                new Receipt() { Id = 1, PetId = 0 }
+            );
         }
     }
 }

@@ -160,4 +160,4 @@ C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore\obj\Debug\JoesPetStore
 C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore\obj\Debug\JoesPetStore.csproj.GenerateResource.Cache
 C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore\obj\Debug\JoesPetStore.dll
 C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore\obj\Debug\JoesPetStore.pdb
-C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore\obj\Debug\JoesPetStore.Migrations.Initial.resources
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore\obj\Debug\JoesPetStore.Migrations.AddReceipt.resources

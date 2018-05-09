@@ -30,6 +30,8 @@ namespace JoesPetStore.Controllers
 
         public ActionResult Purchase()
         {
+            var petDetailsViewModel = Facade.FindPet();
+
             return View();
         }
 

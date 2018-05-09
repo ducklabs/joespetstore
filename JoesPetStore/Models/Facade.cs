@@ -17,6 +17,19 @@ namespace JoesPetStore.Models
             PetRepository.CreatePet(petInputViewModel);
         }
 
+        public static void PurchasePet(int petId)
+        {
+            if (ReceiptRepository.FindPurchaseReceipt() == null && PetRepository.FindPet() != null)
+            {
+                ReceiptRepository.PurchasePet(petId);
+            }
+        }
+
+        public static PurchaseReceiptViewModel FindPurchaseReceipt(int petId)
+        {
+            var receipt = ReceiptRepository.FindPurchaseReceipt();
+            return PurchaseReceiptViewModelAssembler.Assemble(receipt);
+        }
     }
     
 }
