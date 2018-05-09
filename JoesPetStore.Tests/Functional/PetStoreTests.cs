@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using FluentAssert;
 using JoesPetStore.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
 
 namespace JoesPetStore.Tests.Functional
@@ -12,6 +15,12 @@ namespace JoesPetStore.Tests.Functional
     [TestFixture]
     class PetStoreTests
     {
+
+        private static PetInputViewModel CreatePetInputViewModel()
+        {
+            return new PetInputViewModel { Name = "Leo" };
+        }
+
         [TearDown]
         public void TearDown()
         {
@@ -33,7 +42,6 @@ namespace JoesPetStore.Tests.Functional
             // assemble
             var expectedPerDetailsViewModel = CreatePetInputViewModel();
 
-
             // act
             Facade.CreatePet(expectedPerDetailsViewModel);
 
@@ -54,11 +62,20 @@ namespace JoesPetStore.Tests.Functional
             actualPetDetaislViewModel.ShouldBeNull();
         }
 
-        private static PetInputViewModel CreatePetInputViewModel()
+        [Test]
+        public void OfferPet()
         {
-            return new PetInputViewModel { Name = "Leo" };
-        }
+            // assemble
+            var expectedPerDetailsViewModel = CreatePetInputViewModel();
+            Facade.CreatePet(expectedPerDetailsViewModel);
 
+            // act
+            var actualPetDetaislViewModel = Facade.FindPet();
+            //Facade.
+
+            // assert
+            //actualPetDetaislViewModel.ShouldBeNull();
+        }
 
 
     }

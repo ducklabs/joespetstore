@@ -1,3 +1,5 @@
+using JoesPetStore.Models;
+
 namespace JoesPetStore.Migrations
 {
     using System;
@@ -18,6 +20,9 @@ namespace JoesPetStore.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+            context.Pets.AddOrUpdate(x => x.Id,
+                new Pet() { Id = 1, Name = "Leo" }
+            ); 
         }
     }
 }

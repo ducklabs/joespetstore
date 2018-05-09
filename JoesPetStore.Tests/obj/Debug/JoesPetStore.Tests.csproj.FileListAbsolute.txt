@@ -66,3 +66,45 @@ C:\Users\Developer\documents\visual studio 2017\Projects\JoesPetStore\JoesPetSto
 C:\Users\Developer\documents\visual studio 2017\Projects\JoesPetStore\JoesPetStore.Tests\bin\Debug\roslyn\vbc.rsp
 C:\Users\Developer\documents\visual studio 2017\Projects\JoesPetStore\JoesPetStore.Tests\bin\Debug\roslyn\VBCSCompiler.exe
 C:\Users\Developer\documents\visual studio 2017\Projects\JoesPetStore\JoesPetStore.Tests\bin\Debug\roslyn\VBCSCompiler.exe.config
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\NUnit3.TestAdapter.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\NUnit3.TestAdapter.pdb
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\nunit.engine.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\nunit.engine.api.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\Mono.Cecil.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\ApplicationInsights.config
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\JoesPetStore.Tests.dll.config
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\JoesPetStore.Tests.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\JoesPetStore.Tests.pdb
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\EntityFramework.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\FluentAssert.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\JoesPetStore.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\nunit.framework.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\System.Web.Helpers.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\System.Web.Mvc.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\System.Web.Razor.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\System.Web.WebPages.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\System.Web.Optimization.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\JoesPetStore.pdb
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\JoesPetStore.dll.config
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\EntityFramework.xml
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\FluentAssert.pdb
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\nunit.framework.pdb
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\nunit.framework.xml
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\System.Web.Helpers.xml
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\System.Web.Mvc.xml
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\System.Web.Razor.xml
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\System.Web.WebPages.xml
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\bin\Debug\System.Web.Optimization.xml
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\obj\Debug\JoesPetStore.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\obj\Debug\JoesPetStore.Tests.dll
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore.Tests\obj\Debug\JoesPetStore.Tests.pdb

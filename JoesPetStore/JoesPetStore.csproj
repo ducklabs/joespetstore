@@ -156,6 +156,10 @@
     <Compile Include="Migrations\201805081939499_AddPet.Designer.cs">
       <DependentUpon>201805081939499_AddPet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805091930597_Initial.cs" />
+    <Compile Include="Migrations\201805091930597_Initial.Designer.cs">
+      <DependentUpon>201805091930597_Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Facade.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -209,6 +213,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Pet\Details.cshtml" />
+    <Content Include="Views\Pet\Offer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -231,6 +236,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805081939499_AddPet.resx">
       <DependentUpon>201805081939499_AddPet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805091930597_Initial.resx">
+      <DependentUpon>201805091930597_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
