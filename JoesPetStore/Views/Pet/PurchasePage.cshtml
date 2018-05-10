@@ -8,4 +8,9 @@
     Purchase Details Here
 </p>
 @Html.ActionLink("Cancel", "Details", "Pet")
-Submit
+
+@using (Html.BeginForm("Purchase","Pet"))
+{
+    <input type="hidden" id="petid" name="petid" />
+    <input type="submit" value="Submit" />
+}

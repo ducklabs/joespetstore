@@ -160,7 +160,23 @@
     <Compile Include="Migrations\201805092242086_AddReceipt.Designer.cs">
       <DependentUpon>201805092242086_AddReceipt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805101746318_PetRelationship.cs" />
+    <Compile Include="Migrations\201805101746318_PetRelationship.Designer.cs">
+      <DependentUpon>201805101746318_PetRelationship.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805101914059_PetIdAdded.cs" />
+    <Compile Include="Migrations\201805101914059_PetIdAdded.Designer.cs">
+      <DependentUpon>201805101914059_PetIdAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805102055104_AddingApproval.cs" />
+    <Compile Include="Migrations\201805102055104_AddingApproval.Designer.cs">
+      <DependentUpon>201805102055104_AddingApproval.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Approval.cs" />
+    <Compile Include="Models\ApprovalRepository.cs" />
+    <Compile Include="Models\ApprovalState.cs" />
+    <Compile Include="Models\ApprovalViewModelAssembler.cs" />
     <Compile Include="Models\Facade.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PetController.cs" />
@@ -168,14 +184,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\IEntity.cs" />
+    <Compile Include="Models\ApprovalViewModel.cs" />
     <Compile Include="Models\Pet.cs" />
     <Compile Include="Models\PetDbContext.cs" />
     <Compile Include="Models\PetDetailsViewModelAssembler.cs" />
     <Compile Include="Models\PetInputViewModel.cs" />
     <Compile Include="Models\PetDetailsViewModel.cs" />
     <Compile Include="Models\PetRepository.cs" />
-    <Compile Include="Models\PurchaseReceiptViewModel.cs" />
-    <Compile Include="Models\PurchaseReceiptViewModelAssembler.cs" />
+    <Compile Include="Exceptions\PurchasePetException.cs" />
+    <Compile Include="Models\ReceiptViewModel.cs" />
+    <Compile Include="Models\ReceiptViewModelAssembler.cs" />
     <Compile Include="Models\Receipt.cs" />
     <Compile Include="Models\ReceiptRepository.cs" />
     <Compile Include="Models\TransactionManager.cs" />
@@ -217,9 +235,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Pet\Details.cshtml" />
-    <Content Include="Views\Pet\Offer.cshtml" />
+    <Content Include="Views\Pet\Request.cshtml" />
     <Content Include="Views\Pet\Approve.cshtml" />
-    <Content Include="Views\Pet\Purchase.cshtml" />
+    <Content Include="Views\Pet\PurchasePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -245,6 +263,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805092242086_AddReceipt.resx">
       <DependentUpon>201805092242086_AddReceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805101746318_PetRelationship.resx">
+      <DependentUpon>201805101746318_PetRelationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805101914059_PetIdAdded.resx">
+      <DependentUpon>201805101914059_PetIdAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805102055104_AddingApproval.resx">
+      <DependentUpon>201805102055104_AddingApproval.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

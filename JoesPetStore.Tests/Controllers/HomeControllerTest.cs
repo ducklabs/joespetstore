@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
+using FluentAssert;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using JoesPetStore;
 using JoesPetStore.Controllers;
@@ -22,7 +23,7 @@ namespace JoesPetStore.Tests.Controllers
             ViewResult result = controller.Index() as ViewResult;
 
             // Assert
-            Assert.IsNotNull(result);
+            result.ShouldNotBeNull();
         }
     }
 }

@@ -9,14 +9,14 @@ namespace JoesPetStore.Controllers
 {
     public class PetController : Controller
     {
-        // GET: Pet
+        // GET: PetId
         public ActionResult Details()
         {
             var petDetailsViewModel = Facade.FindPet();
             return View(petDetailsViewModel);
         }
 
-        public ActionResult Offer()
+        public ActionResult Request()
         {
             var petDetailsViewModel = Facade.FindPet();
             return View(petDetailsViewModel);
@@ -28,11 +28,17 @@ namespace JoesPetStore.Controllers
             return View(petDetailsViewModel);
         }
 
-        public ActionResult Purchase()
+        public ActionResult PurchasePage()
         {
             var petDetailsViewModel = Facade.FindPet();
-
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Purchase(string petid)
+        {
+            Facade.PurchasePet();
+            return RedirectToAction("Index", "Home", new { area = "" });
         }
 
 

@@ -161,3 +161,6 @@ C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore\obj\Debug\JoesPetStore
 C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore\obj\Debug\JoesPetStore.dll
 C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore\obj\Debug\JoesPetStore.pdb
 C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore\obj\Debug\JoesPetStore.Migrations.AddReceipt.resources
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore\obj\Debug\JoesPetStore.Migrations.PetRelationship.resources
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore\obj\Debug\JoesPetStore.Migrations.PetIdAdded.resources
+C:\Users\Developer\Source\Repos\joespetstore\JoesPetStore\obj\Debug\JoesPetStore.Migrations.AddingApproval.resources

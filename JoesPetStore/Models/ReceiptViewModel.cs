@@ -1,6 +1,6 @@
 ﻿namespace JoesPetStore.Models
 {
-    public class PurchaseReceiptViewModel
+    public class ReceiptViewModel
     {
         public int PetId { get; set; }
     }

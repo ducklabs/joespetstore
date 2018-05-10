@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
+﻿using System.Collections.Generic;
+using System.Data.Entity.Core.Metadata.Edm;
 using FluentAssert;
+using JoesPetStore.Exceptions;
 using JoesPetStore.Models;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
+using Assert = NUnit.Framework.Assert;
+using TransactionManager = JoesPetStore.Models.TransactionManager;
 
 namespace JoesPetStore.Tests.Functional
 {
@@ -21,40 +18,33 @@ namespace JoesPetStore.Tests.Functional
             return new PetInputViewModel { Name = "Leo" };
         }
 
-        private static PetDetailsViewModel CreateAnonymousPet()
+        private static PetDetailsViewModel CreateAnonymousPetInDb()
         {
             var petInputViewModel = CreatePetInputViewModel();
             Facade.CreatePet(petInputViewModel);
             return Facade.FindPet();
         }
-
-        [TearDown]
-        public void TearDown()
+      
+        [SetUp]
+        public void Setup()
         {
-            using (var context = new PetDbContext())
-            {
-                context.Database.ExecuteSqlCommand(
-                    @"exec sp_MSforeachtable @precommand = null
-                    ,@command1 = 'TRUNCATE TABLE ?'
-                    ,@command2 = null
-                    ,@postcommand = null
-                    ,@whereand = 'AND schema_name(schema_id) = ''dbo'' and type_desc = ''USER_TABLE'' and object_name(object_id) not in (''__MigrationHistory'')'"
-                );
-            }
+            TransactionManager.DeleteEntities<Receipt>();
+            TransactionManager.DeleteEntities<Pet>();
+            TransactionManager.DeleteEntities<Approval>();
         }
 
         [Test]
         public void TestCreatePet()
         {
             // assemble
-            var expectedPerDetailsViewModel = CreatePetInputViewModel();
+            var expectedPetDetailsViewModel = CreatePetInputViewModel();
 
             // act
-            Facade.CreatePet(expectedPerDetailsViewModel);
+            Facade.CreatePet(expectedPetDetailsViewModel);
 
             // assert
             var actualPetDetaislViewModel = Facade.FindPet();
-            actualPetDetaislViewModel.Name.ShouldBeEqualTo(expectedPerDetailsViewModel.Name);
+            actualPetDetaislViewModel.Name.ShouldBeEqualTo(expectedPetDetailsViewModel.Name);
         }
 
         [Test]
@@ -70,17 +60,181 @@ namespace JoesPetStore.Tests.Functional
         }
 
         [Test]
-        public void TestPurchasePet()
+        public void TestRequestApproval_CreatesPendingApproval()
         {
             // assemble
-            var expectedPetViewModel = CreateAnonymousPet();
+            var customerEmail = "joe@goodhomesforpets.com";
 
             // act
-            Facade.PurchasePet(expectedPetViewModel.Id);
+            Facade.RequestPetPurchase(customerEmail);
 
             // assert
-            var receiptViewModel = Facade.FindPurchaseReceipt(expectedPetViewModel.Id);
+            List<ApprovalViewModel> pendingApprovals = Facade.GetPendingApprovals();
+            pendingApprovals.Count.ShouldBeEqualTo(1);
+            pendingApprovals[0].CustomerEmail.ShouldBeEqualTo(customerEmail);
+        }
+
+        [Test]
+        public void TestGetPendingApprovals_NoPendingApprovals()
+        {
+            // assemble
+
+            // act
+            List<ApprovalViewModel> pendingApprovals = Facade.GetPendingApprovals();
+
+            // assert
+            pendingApprovals.ShouldBeEmpty();
+        }
+
+        [Test]
+        public void TestGetPendingApprovals()
+        {
+            // assemble
+            var customerEmail = "joe@goodhomesforpets.com";
+            Facade.RequestPetPurchase(customerEmail);
+
+            // act
+            List<ApprovalViewModel> pendingApprovals = Facade.GetPendingApprovals();
+
+            // assert
+            pendingApprovals.Count.ShouldBeEqualTo(1);
+            pendingApprovals[0].CustomerEmail.ShouldBeEqualTo(customerEmail);
+        }
+
+        [Test]
+        public void TestAcceptPendingApproval_CreatesAcceptedApproval()
+        {
+            // assemble
+            var expectedApprovalState = ApprovalState.Approved;
+            var customerEmail = "joe@goodhomesforpets.com";
+            Facade.RequestPetPurchase(customerEmail);
+
+            // act
+            //Facade.Approve();
+            
+            // assert
+            //List<ApprovalViewModel> acceptedApprovals = Facade.GetApprovedApprovals();
+            //acceptedApprovals[0].ApprovalState.ShouldBeEqualTo(expectedApprovalState);
+        }
+
+        [Test]
+        public void TestAcceptPendingApproval_FiresAnEmailWithTheApproval()
+        {
+            // assemble
+
+            // act
+
+            // assert
+            Assert.Fail("Unimplemented");
+        }
+
+        [Test]
+        public void TestGetPendingApprovals_ApprovalForPetHasBeenAccepted_NoLongerShowOtherPendingApprovalsForSamePet()
+        {
+            // assemble
+
+            // act
+
+            // assert
+            Assert.Fail("Unimplemented");
+        }
+
+
+        [Test]
+        public void TestRejectApproval_FiresAnEmail()
+        {
+            // assemble
+
+            // act
+
+            // assert
+            Assert.Fail("Unimplemented");
+        }
+
+        [Test]
+        public void TestRejectApproval_RemovesPendingApproval()
+        {
+            // assemble
+
+            // act
+
+            // assert
+            Assert.Fail("Unimplemented");
+        }
+
+        [Test]
+        public void TestRejectApproval_LeavesOtherPendingApprovalsUntouched()
+        {
+            // assemble
+
+            // act
+
+            // assert
+            Assert.Fail("Unimplemented");
+        }
+
+        [Test]
+        public void TestCustomerPurchase_RejectsOtherPendingApprovalsForSamePet()
+        {
+            // assemble
+
+            // act
+
+            // assert
+            Assert.Fail("Unimplemented");
+        }
+
+        [Test]
+        public void TestRequestApproval_PetAlreadyPurchased_Fails()
+        {
+            // assemble
+
+            // act
+
+            // assert
+            Assert.Fail("Unimplemented");
+
+        }
+
+        [Test]
+        public void TestPurchasePet_WithApproval()
+        {
+            // assemble
+            var expectedPetViewModel = CreateAnonymousPetInDb();
+
+            // act
+            Facade.PurchasePet();
+
+            // assert
+            var receiptViewModel = Facade.FindPurchaseReceipt();
             receiptViewModel.PetId.ShouldBeEqualTo(expectedPetViewModel.Id);
+
+        }
+
+        [Test]
+        public void TestUserApprovalCancel_PetReappearsInGetPendingApprovals()
+        {
+            // assemble
+            var expectedPetViewModel = CreateAnonymousPetInDb();
+
+            // act
+            Facade.PurchasePet();
+
+            // assert
+            var receiptViewModel = Facade.FindPurchaseReceipt();
+            receiptViewModel.PetId.ShouldBeEqualTo(expectedPetViewModel.Id);
+
+        }
+
+        [Test]
+        public void TestPurchasePet_WithoutApproval_Fails()
+        {
+            // assemble
+
+            // act
+
+            // assert
+            Assert.Fail("Unimplemented");
 
         }
 
@@ -89,28 +243,19 @@ namespace JoesPetStore.Tests.Functional
         public void TestPurchasePet_PetAlreadyPurchased()
         {
             // assemble
-            var expectedPetViewModel = CreateAnonymousPet();
-            Facade.PurchasePet(expectedPetViewModel.Id);
+            CreateAnonymousPetInDb();
+            Facade.PurchasePet();
 
-            // act
-            Facade.PurchasePet(expectedPetViewModel.Id);
-
-            // assert
-            var receiptViewModel = Facade.FindPurchaseReceipt(expectedPetViewModel.Id);
-            receiptViewModel.PetId.ShouldBeEqualTo(expectedPetViewModel.Id);
+            // Act & Assert
+            Assert.Throws<PurchasePetException>( Facade.PurchasePet );
         }
 
         [Test]
         public void TestPurchasePet_NoPets()
         {
-            // assemble
-
-            // act
-            Facade.PurchasePet(0);
-
-            // assert
-            var receiptViewModel = Facade.FindPurchaseReceipt(0);
-            receiptViewModel.ShouldBeNull();
+            // Act & Assert
+            Assert.Throws<PurchasePetException>( Facade.PurchasePet );
         }
+
     }
 }

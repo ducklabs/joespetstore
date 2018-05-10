@@ -10,10 +10,9 @@ namespace JoesPetStore.Models
         {
         }
 
-
         public DbSet<Pet> Pets { get; set; }
         public DbSet<Receipt> Receipts { get; set; }
-
+        public DbSet<Approval> Approvals { get; set; }
 
     }
 }
