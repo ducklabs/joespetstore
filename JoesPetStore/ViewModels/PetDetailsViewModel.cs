@@ -1,4 +1,4 @@
-﻿namespace JoesPetStore.Models
+﻿namespace JoesPetStore.ViewModels
 {
     public class PetDetailsViewModel
     {

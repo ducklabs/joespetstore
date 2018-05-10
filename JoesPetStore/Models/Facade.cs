@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using JoesPetStore.Exceptions;
+using JoesPetStore.ViewModels;
 using static JoesPetStore.Models.PetRepository;
 
 namespace JoesPetStore.Models
@@ -43,14 +44,37 @@ namespace JoesPetStore.Models
 
         }
 
-        public static List<ApprovalViewModel> GetPendingApprovals()
+        public static List<ApprovalViewModel> GetApprovals(ApprovalState approvalState)
         {
             var pendingApprovalViewModels = new List<ApprovalViewModel>();
-            foreach (var pendingApproval in ApprovalRepository.GetPendingApprovals())
+            foreach (var pendingApproval in ApprovalRepository.GetApprovals(approvalState))
             {
                 pendingApprovalViewModels.Add(ApprovalViewModelAssembler.Assemble(pendingApproval));
             }
             return pendingApprovalViewModels;
+        }
+
+        public static List<ApprovalViewModel> GetApprovals()
+        {
+            var pendingApprovalViewModels = new List<ApprovalViewModel>();
+            foreach (var pendingApproval in ApprovalRepository.GetApprovals())
+            {
+                pendingApprovalViewModels.Add(ApprovalViewModelAssembler.Assemble(pendingApproval));
+            }
+            return pendingApprovalViewModels;
+        }
+
+        public static void Approve(ApprovalViewModel approvalViewModel)
+        {
+            if (approvalViewModel.ApprovalState == ApprovalState.Pending)
+            {
+                ApprovalRepository.Approve(approvalViewModel);
+            }
+            else
+            {
+                throw new ApprovalException("Approval not in Pending state");
+            }
+
         }
     }
 }

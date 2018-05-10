@@ -23,6 +23,9 @@ namespace JoesPetStore.Migrations
             context.Pets.AddOrUpdate(x => x.Id,
                 new Pet() { Id = 1, Name = "Leo" }
             );
+            context.Approvals.AddOrUpdate(x => x.Id,
+                new Approval() { ApprovalState = ApprovalState.Pending, CustomerEmail = "Kevin@gregsHouse.com"}
+            );
             /*context.Receipts.AddOrUpdate(x => x.Id,
                 new Receipt() { Id = 1, PetId = 0 }
             );*/

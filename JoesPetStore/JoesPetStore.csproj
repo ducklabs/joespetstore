@@ -63,12 +63,21 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -152,6 +161,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Migrations\201805081939499_AddPet.cs" />
     <Compile Include="Migrations\201805081939499_AddPet.Designer.cs">
       <DependentUpon>201805081939499_AddPet.cs</DependentUpon>
@@ -174,9 +184,11 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Approval.cs" />
+    <Compile Include="Exceptions\ApprovalException.cs" />
     <Compile Include="Models\ApprovalRepository.cs" />
     <Compile Include="Models\ApprovalState.cs" />
-    <Compile Include="Models\ApprovalViewModelAssembler.cs" />
+    <Compile Include="ViewModels\AllApprovalsViewModel.cs" />
+    <Compile Include="ViewModels\ApprovalViewModelAssembler.cs" />
     <Compile Include="Models\Facade.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PetController.cs" />
@@ -184,16 +196,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\IEntity.cs" />
-    <Compile Include="Models\ApprovalViewModel.cs" />
+    <Compile Include="ViewModels\ApprovalViewModel.cs" />
     <Compile Include="Models\Pet.cs" />
     <Compile Include="Models\PetDbContext.cs" />
-    <Compile Include="Models\PetDetailsViewModelAssembler.cs" />
-    <Compile Include="Models\PetInputViewModel.cs" />
-    <Compile Include="Models\PetDetailsViewModel.cs" />
+    <Compile Include="ViewModels\PetDetailsViewModelAssembler.cs" />
+    <Compile Include="ViewModels\PetInputViewModel.cs" />
+    <Compile Include="ViewModels\PetDetailsViewModel.cs" />
     <Compile Include="Models\PetRepository.cs" />
     <Compile Include="Exceptions\PurchasePetException.cs" />
-    <Compile Include="Models\ReceiptViewModel.cs" />
-    <Compile Include="Models\ReceiptViewModelAssembler.cs" />
+    <Compile Include="ViewModels\ReceiptViewModel.cs" />
+    <Compile Include="ViewModels\ReceiptViewModelAssembler.cs" />
     <Compile Include="Models\Receipt.cs" />
     <Compile Include="Models\ReceiptRepository.cs" />
     <Compile Include="Models\TransactionManager.cs" />
@@ -236,8 +248,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Pet\Details.cshtml" />
     <Content Include="Views\Pet\Request.cshtml" />
-    <Content Include="Views\Pet\Approve.cshtml" />
     <Content Include="Views\Pet\PurchasePage.cshtml" />
+    <Content Include="Views\Pet\Approve.cshtml" />
+    <Content Include="Views\Admin\Approval.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

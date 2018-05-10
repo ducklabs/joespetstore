@@ -1,12 +1,11 @@
-﻿@model JoesPetStore.Models.PetDetailsViewModel
+﻿@model JoesPetStore.ViewModels.PetDetailsViewModel
 
 @{
     ViewBag.Title = "Approve";
 }
 
 <h2>Approve</h2>
-You Have Been Approved For this purchase!
+You Have Been Approved
 
-@Html.ActionLink("Cancel", "Details", "Pet")
-@Html.ActionLink("Purchase", "PurchasePage", "Pet")
-
+@Html.ActionLink("Cancel", "Index", "Home")
+@Html.ActionLink("Payment", "PurchasePage", "Pet")

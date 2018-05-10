@@ -1,0 +1,11 @@
+﻿@model JoesPetStore.ViewModels.AllApprovalsViewModel
+
+@{
+    ViewBag.Title = "Approval";
+}
+
+<h2>Approval</h2>
+
+@foreach (var approval in @Model.ApprovalViewModels) {
+    @approval.CustomerEmail
+}

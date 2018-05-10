@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity.Core.Metadata.Edm;
+using System.Linq;
 using FluentAssert;
 using JoesPetStore.Exceptions;
 using JoesPetStore.Models;
+using JoesPetStore.ViewModels;
 using NUnit.Framework;
 using Assert = NUnit.Framework.Assert;
 using TransactionManager = JoesPetStore.Models.TransactionManager;
@@ -69,7 +71,7 @@ namespace JoesPetStore.Tests.Functional
             Facade.RequestPetPurchase(customerEmail);
 
             // assert
-            List<ApprovalViewModel> pendingApprovals = Facade.GetPendingApprovals();
+            List<ApprovalViewModel> pendingApprovals = Facade.GetApprovals(ApprovalState.Pending);
             pendingApprovals.Count.ShouldBeEqualTo(1);
             pendingApprovals[0].CustomerEmail.ShouldBeEqualTo(customerEmail);
         }
@@ -80,7 +82,7 @@ namespace JoesPetStore.Tests.Functional
             // assemble
 
             // act
-            List<ApprovalViewModel> pendingApprovals = Facade.GetPendingApprovals();
+            List<ApprovalViewModel> pendingApprovals = Facade.GetApprovals(ApprovalState.Pending);
 
             // assert
             pendingApprovals.ShouldBeEmpty();
@@ -94,7 +96,7 @@ namespace JoesPetStore.Tests.Functional
             Facade.RequestPetPurchase(customerEmail);
 
             // act
-            List<ApprovalViewModel> pendingApprovals = Facade.GetPendingApprovals();
+            List<ApprovalViewModel> pendingApprovals = Facade.GetApprovals(ApprovalState.Pending);
 
             // assert
             pendingApprovals.Count.ShouldBeEqualTo(1);
@@ -110,11 +112,11 @@ namespace JoesPetStore.Tests.Functional
             Facade.RequestPetPurchase(customerEmail);
 
             // act
-            //Facade.Approve();
+            Facade.Approve(Facade.GetApprovals(ApprovalState.Pending)[0]);
             
             // assert
-            //List<ApprovalViewModel> acceptedApprovals = Facade.GetApprovedApprovals();
-            //acceptedApprovals[0].ApprovalState.ShouldBeEqualTo(expectedApprovalState);
+            ApprovalViewModel acceptedApproval = Facade.GetApprovals(ApprovalState.Approved)[0];
+            acceptedApproval.ApprovalState.ShouldBeEqualTo(expectedApprovalState);
         }
 
         [Test]

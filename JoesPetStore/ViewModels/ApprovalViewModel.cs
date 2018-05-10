@@ -1,6 +1,7 @@
 ﻿using System;
+using JoesPetStore.Models;
 
-namespace JoesPetStore.Models
+namespace JoesPetStore.ViewModels
 {
     public class ApprovalViewModel
     {

@@ -35,5 +35,9 @@ namespace JoesPetStore.Models
             dbContext.SaveChanges();
         }
 
+        public static void Commit()
+        {
+            dbContext.SaveChanges();
+        }
     }
 }

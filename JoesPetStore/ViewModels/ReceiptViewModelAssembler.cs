@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using JoesPetStore.Models;
 
-namespace JoesPetStore.Models
+namespace JoesPetStore.ViewModels
 {
     internal class ReceiptViewModelAssembler
     {

@@ -1,4 +1,6 @@
-﻿namespace JoesPetStore.Models
+﻿using JoesPetStore.Models;
+
+namespace JoesPetStore.ViewModels
 {
     public class ApprovalViewModelAssembler
     {

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using JoesPetStore.ViewModels;
 
 namespace JoesPetStore.Models
 {
