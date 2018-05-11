@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using JoesPetStore.Exceptions;
 using JoesPetStore.ViewModels;
 using static JoesPetStore.Models.PetRepository;
@@ -19,16 +20,14 @@ namespace JoesPetStore.Models
             PetRepository.CreatePet(petInputViewModel);
         }
 
-        public static void PurchasePet()
+        public static void PurchasePet(ApprovalViewModel approvalViewModel)
         {
-            if (ReceiptRepository.FindPurchaseReceipt() == null && PetRepository.FindPet() != null)
-            {
-                ReceiptRepository.PurchasePet();
-            }
-            else
-            {
-                throw new PurchasePetException("PetId Already Bought");
-            }
+            var approval = ApprovalRepository.FindApprovalByEmail(approvalViewModel.CustomerEmail);
+            if (approvalViewModel == null) throw new PurchasePetException("No approval found");
+
+            approval.PurchasePet();
+
+            //TransactionManager.Commit();
         }
 
         public static ReceiptViewModel FindPurchaseReceipt()
@@ -46,35 +45,36 @@ namespace JoesPetStore.Models
 
         public static List<ApprovalViewModel> GetApprovals(ApprovalState approvalState)
         {
-            var pendingApprovalViewModels = new List<ApprovalViewModel>();
-            foreach (var pendingApproval in ApprovalRepository.GetApprovals(approvalState))
-            {
-                pendingApprovalViewModels.Add(ApprovalViewModelAssembler.Assemble(pendingApproval));
-            }
-            return pendingApprovalViewModels;
-        }
-
-        public static List<ApprovalViewModel> GetApprovals()
-        {
-            var pendingApprovalViewModels = new List<ApprovalViewModel>();
-            foreach (var pendingApproval in ApprovalRepository.GetApprovals())
-            {
-                pendingApprovalViewModels.Add(ApprovalViewModelAssembler.Assemble(pendingApproval));
-            }
-            return pendingApprovalViewModels;
+            var approvals = ApprovalRepository.FindApprovalsByApprovalState(approvalState);
+            var approvalViewModels = ApprovalViewModelAssembler.Assemble(approvals);
+            return approvalViewModels;
         }
 
         public static void Approve(ApprovalViewModel approvalViewModel)
         {
-            if (approvalViewModel.ApprovalState == ApprovalState.Pending)
-            {
-                ApprovalRepository.Approve(approvalViewModel);
-            }
-            else
-            {
-                throw new ApprovalException("Approval not in Pending state");
-            }
+            var approval = ApprovalRepository.FindApprovalByEmail(approvalViewModel.CustomerEmail);
+            if (approval == null) return;
+            
+            approval.Approve();
 
+            TransactionManager.Commit();
+        }
+
+        public static List<ApprovalViewModel> GetPendingApprovals()
+        {
+            var pendingApprovals = ApprovalRepository.FindPendingApprovalForPetsThatAreNotAlreadyApproved();
+            var pendApprovalViewModels = ApprovalViewModelAssembler.Assemble(pendingApprovals);
+            return pendApprovalViewModels;
+        }
+
+        public static void Reject(ApprovalViewModel pendingApproval)
+        {
+            var approval = ApprovalRepository.FindApprovalByEmail(pendingApproval.CustomerEmail);
+            if (approval == null) return;
+
+            approval.Reject();
+
+            TransactionManager.Commit();
         }
     }
 }

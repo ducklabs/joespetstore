@@ -17,7 +17,7 @@ namespace JoesPetStore.Controllers
         {
             //var petDetailsViewModel = Facade.FindPurchaseReceipt();
             var allApprovalViewModels = new AllApprovalsViewModel(){ApprovalViewModels = new List<ApprovalViewModel>() };
-            allApprovalViewModels.ApprovalViewModels.AddRange( Facade.GetApprovals() );
+            allApprovalViewModels.ApprovalViewModels.AddRange( Facade.GetApprovals(ApprovalState.Pending) );
             return View(allApprovalViewModels);
         }
     }

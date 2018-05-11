@@ -37,7 +37,7 @@ namespace JoesPetStore.Controllers
         [HttpPost]
         public ActionResult Purchase(string petid)
         {
-            Facade.PurchasePet();
+            //Facade.CreateReceipt();
             return RedirectToAction("Index", "Home", new { area = "" });
         }
 

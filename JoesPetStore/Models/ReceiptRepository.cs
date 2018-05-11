@@ -7,7 +7,7 @@ namespace JoesPetStore.Models
 {
     internal class ReceiptRepository
     {
-        public static void PurchasePet()
+        public static void CreateReceipt(string customerEmail)
         {
             var reciept = new Receipt() { Pet = PetRepository.FindPet() };
             TransactionManager.CreateEntity(reciept);

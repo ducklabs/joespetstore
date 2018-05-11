@@ -162,6 +162,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Mail\DefaultEmailService.cs" />
+    <Compile Include="Mail\EmailServerServiceFactory.cs" />
+    <Compile Include="Mail\IEmailServer.cs" />
     <Compile Include="Migrations\201805081939499_AddPet.cs" />
     <Compile Include="Migrations\201805081939499_AddPet.Designer.cs">
       <DependentUpon>201805081939499_AddPet.cs</DependentUpon>

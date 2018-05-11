@@ -9,26 +9,32 @@ namespace JoesPetStore.Models
     {
         public static void CreatePendingApproval(string customerEmail)
         {
-            Approval approval = new Approval(){ CustomerEmail = customerEmail, ApprovalState = ApprovalState.Pending };
+            Approval approval = new Approval()
+            {
+                CustomerEmail = customerEmail,
+                ApprovalState = ApprovalState.Pending
+            };
             TransactionManager.CreateEntity(approval);
         }
 
-        public static List<Approval> GetApprovals(ApprovalState approvalState)
+        public static List<Approval> FindApprovalsByApprovalState(ApprovalState approvalState)
         {
             return TransactionManager.FindWhere<Approval>(app => app.ApprovalState == approvalState).ToList();
         }
 
-        public static List<Approval> GetApprovals()
+        public static Approval FindApprovalByEmail(string customerEmail)
         {
-            return TransactionManager.FindWhere<Approval>(app => true).ToList();
+            return TransactionManager.FindWhere<Approval>(app => app.CustomerEmail.Equals(customerEmail)).FirstOrDefault();
         }
 
-        public static void Approve(ApprovalViewModel approvalViewModel)
+        public static List<Approval> FindPendingApprovalForPetsThatAreNotAlreadyApproved()
         {
-            var approval = TransactionManager.FindWhere<Approval>(app => app.CustomerEmail.Equals(approvalViewModel.CustomerEmail)).ToList().ElementAtOrDefault(0);
-            if (approval == null) return;
-            approval.ApprovalState = ApprovalState.Approved;
-            TransactionManager.Commit();
+            var leosApproval = TransactionManager.FindWhere<Approval>(app => app.ApprovalState == ApprovalState.Approved).FirstOrDefault();
+            if (leosApproval == null)
+            {
+                return FindApprovalsByApprovalState(ApprovalState.Pending);
+            }
+            return new List<Approval>();
         }
     }
 
